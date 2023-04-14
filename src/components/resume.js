@@ -1,13 +1,14 @@
 import React, { Component } from "react"
 
-class Resume extends Component {
-  render() {
-    return (
-      <div className="resume-container">
-        <div className="resume"></div>
+const Resume = ({ Arr }) => {
+  console.log(Arr)
+  return (
+    <div className="resume-container">
+      <div className="resume">
+        <div className="green-section">{Arr[0].value}</div>
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default Resume

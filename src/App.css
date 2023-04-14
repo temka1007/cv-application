@@ -185,6 +185,7 @@ template {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: "Roboto", sans-serif;
 }
 
 body {
@@ -196,7 +197,7 @@ body {
   display: flex;
   flex-direction: column;
   max-height: 100vh;
-  background-color: rgb(190, 190, 190);
+  background-color: #e7ebee;
 }
 
 /* main  */
@@ -234,33 +235,193 @@ body {
   overflow: auto;
   max-height: inherit;
   position: relative;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .form-creator > div {
   width: clamp(250px, 100%, 650px);
 }
 
+/* contact information */
+
+.info {
+  width: 100%;
+  min-height: 2000px;
+  padding-top: 40px;
+}
+
+.info > div div {
+  margin-bottom: 20px;
+}
+
+/* title */
+
+.title {
+  font-size: 26px;
+  font-weight: 500;
+}
+
+.description {
+  color: rgb(121, 121, 121);
+}
+
+.description + div {
+  font-weight: 500;
+  color: rgb(80, 80, 80);
+  display: flex;
+  align-items: center;
+}
+.description + div span {
+  font-size: 20px;
+}
+
+/* contact info */
+
+.image-upload-container {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.form-profile-image {
+  min-height: 130px;
+  min-width: 130px;
+  border-radius: 10px;
+  background-image: url(./images/847-8474751_download-empty-profile.png);
+}
+.form-profile-image + div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: 20px;
+}
+.form-profile-image + div > div {
+  font-weight: 500;
+}
+#fileInput {
+  display: none;
+}
+.add-photo {
+  display: flex;
+  align-items: flex-end;
+  color: rgb(52, 139, 219);
+  cursor: pointer;
+}
+.add-photo span {
+  font-size: 20px;
+}
+
+/* input */
+
+.input-container {
+  margin-bottom: 20px;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.input input {
+  border: none;
+  padding: 8px 0;
+  font-weight: 400;
+  background-color: #e7ebee;
+  border-radius: 5px;
+  height: 50px;
+  transition: 300ms ease;
+  padding-top: 20px;
+  padding-left: 10px;
+}
+.input input:focus {
+  background-color: transparent;
+  outline: 1px solid rgb(52, 139, 219);
+}
+
+.input label {
+  position: absolute;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  color: rgb(131, 131, 131);
+  transition: 300ms ease;
+  font-size: 16px;
+  padding-left: 10px;
+}
+
+.input input:focus + label,
+.input input:not(:placeholder-shown) + label {
+  transform: translateY(-13px);
+  font-size: 12px;
+}
+
+.input input:focus + label {
+  color: rgb(52, 139, 219);
+}
+
+.example {
+  margin-top: 5px;
+  padding-left: 10px;
+  font-weight: 300;
+  font-size: 13px;
+  color: rgb(131, 131, 131);
+}
+
+/* section navigator */
+
 .section-navigator {
   position: sticky;
   min-height: 100px;
   width: clamp(250px, 100%, 650px);
-  border-top: 2px solid rgb(190, 190, 190);
+  border-top: 1px solid rgb(190, 190, 190);
   background-color: white;
   bottom: 0;
   box-shadow: rgba(0, 0, 0, 0.7) 0px -10px 25px -26px;
-  border-top: 2px solid rgb(190, 190, 190);
-  opacity: 0.9;
+  opacity: 0.8;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
-.info {
-  width: 100%;
-  height: 2000px;
+.navigation-btn {
+  background-color: #ff514e;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  height: 36px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  border-radius: 18px;
 }
 
 /* resume main */
 
 .resume-container {
-  background-color: rgb(230, 230, 230);
+  background-color: rgb(241, 241, 241);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -268,7 +429,6 @@ body {
   overflow: auto;
   padding-top: 250px;
   padding-bottom: 50px;
-  scrollbar-width: none;
 }
 
 .resume {
@@ -277,4 +437,12 @@ body {
   width: 600px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
     rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.green-section {
+  height: 900px;
+  width: calc(600px * 0.4);
+  background-color: rgb(138, 148, 119);
 }
