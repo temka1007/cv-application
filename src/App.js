@@ -6,6 +6,8 @@ import Resume from "./components/resume"
 import Info from "./components/contact-information"
 
 const App = () => {
+  const [profilePic, setProfilePic] = useState("")
+
   const [Arr, setArr] = useState([
     {
       value: "",
@@ -41,6 +43,10 @@ const App = () => {
     )
   }
 
+  const handleResumeProfile = value => {
+    setProfilePic(value)
+  }
+
   return (
     <>
       <NavBar />
@@ -48,13 +54,16 @@ const App = () => {
       <div>
         <div className="form-creator">
           <div>
-            <Info handleArr={handleArr} />
+            <Info
+              handleArr={handleArr}
+              handleResumeProfile={handleResumeProfile}
+            />
           </div>
           <div className="section-navigator">
             <button className="navigation-btn">Finish</button>
           </div>
         </div>
-        <Resume Arr={Arr} />
+        <Resume Arr={Arr} profilePic={profilePic} />
       </div>
     </>
   )

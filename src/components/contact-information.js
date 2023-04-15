@@ -6,6 +6,7 @@ import Education from "./eduction"
 import Skills from "./skills"
 import Languages from "./languages"
 import Objective from "./objective"
+import emptyProfileImage from "../images/847-8474751_download-empty-profile.png"
 
 class Title extends Component {
   render() {
@@ -25,16 +26,47 @@ class Title extends Component {
   }
 }
 
-const AddPhoto = () => {
+const AddPhoto = ({ handleResumeProfile }) => {
+  const [file, setFile] = useState("")
+
+  const getImg = event => {
+    const newFile = event.target.files[0]
+
+    const reader = new FileReader()
+
+    reader.readAsDataURL(newFile)
+
+    reader.onload = e => {
+      setFile(e.target.result)
+    }
+  }
+
+  const img = pic => {
+    if (pic === "") {
+      handleResumeProfile(emptyProfileImage)
+      return emptyProfileImage
+    } else {
+      handleResumeProfile(file)
+      return file
+    }
+  }
+
   return (
     <div className="image-upload-container">
-      <div className="form-profile-image"></div>
+      <div className="form-profile-image">
+        <img src={img(file)} />
+      </div>
       <div>
         <div>Profile Photo</div>
         <label className="add-photo">
           <span className="material-symbols-outlined">upload_file</span>
           &nbsp;Add Photo
-          <input type="file" id="fileInput" className="fileInput" />
+          <input
+            type="file"
+            id="fileInput"
+            className="fileInput"
+            onChange={getImg}
+          />
         </label>
       </div>
     </div>
@@ -69,10 +101,10 @@ const Input = ({ title, example, handleArr, id }) => {
   )
 }
 
-const ContactInfo = ({ handleArr }) => {
+const ContactInfo = ({ handleArr, handleResumeProfile }) => {
   return (
     <form>
-      <AddPhoto />
+      <AddPhoto handleResumeProfile={handleResumeProfile} />
       <Input
         title="First Name"
         example="e.g. Sarah"
@@ -113,11 +145,14 @@ const ContactInfo = ({ handleArr }) => {
   )
 }
 
-const Info = ({ handleArr }) => {
+const Info = ({ handleArr, handleResumeProfile }) => {
   return (
     <div className="info">
       <Title />
-      <ContactInfo handleArr={handleArr} />
+      <ContactInfo
+        handleArr={handleArr}
+        handleResumeProfile={handleResumeProfile}
+      />
     </div>
   )
 }

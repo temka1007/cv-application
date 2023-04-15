@@ -287,7 +287,12 @@ body {
   min-height: 130px;
   min-width: 130px;
   border-radius: 10px;
-  background-image: url(./images/847-8474751_download-empty-profile.png);
+}
+.form-profile-image img {
+  height: 130px;
+  width: 130px;
+  border-radius: 10px;
+  object-fit: cover;
 }
 .form-profile-image + div {
   display: flex;
@@ -419,6 +424,9 @@ body {
 }
 
 /* resume main */
+.resume-container * {
+  /* border: 1px solid red; */
+}
 
 .resume-container {
   background-color: rgb(241, 241, 241);
@@ -438,11 +446,53 @@ body {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
     rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
   display: flex;
-  justify-content: flex-end;
+  padding-left: 60px;
 }
-
+.white-section {
+  border-left: 1px solid rgb(225, 228, 220);
+  flex-grow: 1;
+}
 .green-section {
   height: 900px;
   width: calc(600px * 0.4);
-  background-color: rgb(138, 148, 119);
+  background-color: rgb(139, 148, 125);
+  padding: 30px 20px 0 20px;
+  display: flex;
+  flex-direction: column;
+}
+.green-section > div {
+  margin-bottom: 30px;
+}
+.green-section * {
+  color: rgb(53, 56, 47);
+}
+.profile-pic-resume {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profile-pic-resume img {
+  height: 150px;
+  width: 150px;
+  border-radius: 75px;
+  object-fit: cover;
+}
+.contact-resume div {
+  height: 25px;
+  display: flex;
+  align-items: center;
+  font-size: 10px;
+}
+.contact-resume div span {
+  font-size: 13px;
+  margin-right: 8px;
+}
+.objective-title {
+  font-size: 13px;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+.objective {
+  font-size: 10px;
+  line-height: 15px;
 }
