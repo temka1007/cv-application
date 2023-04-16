@@ -426,6 +426,12 @@ body {
 /* resume main */
 .resume-container * {
   /* border: 1px solid red; */
+  color: rgb(53, 56, 47);
+}
+.resume-container div,
+.resume-container ul,
+.resume-container li {
+  font-family: "Nanum Myeongjo", serif;
 }
 
 .resume-container {
@@ -448,13 +454,89 @@ body {
   display: flex;
   padding-left: 60px;
 }
+
+/* White section */
+
 .white-section {
   border-left: 1px solid rgb(225, 228, 220);
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 35px;
+  padding-right: 20px;
 }
+.white-section > div {
+  margin-bottom: 30px;
+}
+.name-job-resume {
+  margin-left: 20px;
+  max-width: 300px;
+}
+.name {
+  display: flex;
+  margin-bottom: 5px;
+  overflow-wrap: anywhere;
+  font-size: 26px;
+  font-weight: 900;
+}
+.job {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 12px;
+}
+.resume-title {
+  font-size: 13px;
+  color: rgb(156, 167, 137);
+  margin-left: 20px;
+  margin-bottom: 15px;
+  font-weight: 900;
+}
+.resume-title + div {
+  display: flex;
+}
+.experience-detail > div {
+  margin-bottom: 5px;
+}
+.position,
+.company {
+  font-size: 13px;
+  font-weight: 900;
+}
+.when {
+  margin-right: 30px;
+}
+.when div {
+  font-size: 10px;
+  padding-left: 20px;
+  border-left: 2px solid rgb(139, 148, 125);
+  font-weight: 700;
+}
+.where {
+  font-size: 10px;
+  font-weight: 700;
+}
+.function {
+  font-size: 10px;
+  color: rgb(156, 167, 137);
+  line-height: 13px;
+}
+
+.degree {
+  font-size: 13px;
+  font-weight: 900;
+}
+.university {
+  font-size: 10px;
+  font-weight: 900;
+}
+
+/* Green section */
+
 .green-section {
   height: 900px;
-  width: calc(600px * 0.4);
+  min-width: calc(600px * 0.3);
+  max-width: calc(600px * 0.4);
   background-color: rgb(139, 148, 125);
   padding: 30px 20px 0 20px;
   display: flex;
@@ -487,12 +569,31 @@ body {
   font-size: 13px;
   margin-right: 8px;
 }
+.objective-resume {
+  border: 2px solid transparent;
+}
+.objective-resume:hover {
+  border: 2px solid rgba(39, 141, 236, 0.74);
+  background-color: rgba(39, 141, 236, 0.2);
+  border-radius: 5px;
+}
 .objective-title {
   font-size: 13px;
   margin-bottom: 10px;
-  font-weight: 500;
+  font-weight: 900;
 }
 .objective {
   font-size: 10px;
-  line-height: 15px;
+  line-height: 13px;
+}
+.skills-resume > div,
+.language-resume > div {
+  font-size: 13px;
+  margin-bottom: 10px;
+  font-weight: 900;
+}
+.skills-resume li,
+.language-resume li {
+  font-size: 10px;
+  margin-bottom: 5px;
 }

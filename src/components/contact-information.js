@@ -27,7 +27,7 @@ class Title extends Component {
 }
 
 const AddPhoto = ({ handleResumeProfile }) => {
-  const [file, setFile] = useState("")
+  const [file, setFile] = useState(emptyProfileImage)
 
   const getImg = event => {
     const newFile = event.target.files[0]
@@ -38,23 +38,14 @@ const AddPhoto = ({ handleResumeProfile }) => {
 
     reader.onload = e => {
       setFile(e.target.result)
-    }
-  }
-
-  const img = pic => {
-    if (pic === "") {
-      handleResumeProfile(emptyProfileImage)
-      return emptyProfileImage
-    } else {
-      handleResumeProfile(file)
-      return file
+      handleResumeProfile(e.target.result)
     }
   }
 
   return (
     <div className="image-upload-container">
       <div className="form-profile-image">
-        <img src={img(file)} />
+        <img src={file} alt="profile" />
       </div>
       <div>
         <div>Profile Photo</div>
@@ -65,6 +56,7 @@ const AddPhoto = ({ handleResumeProfile }) => {
             type="file"
             id="fileInput"
             className="fileInput"
+            accept="image/png, image/gif, image/jpeg"
             onChange={getImg}
           />
         </label>
@@ -73,13 +65,13 @@ const AddPhoto = ({ handleResumeProfile }) => {
   )
 }
 
-const Input = ({ title, example, handleArr, id }) => {
+const Input = ({ title, example, handleInfo, id }) => {
   const [text, setText] = useState("")
 
   const sendText = e => {
     const updatedText = e.target.value
     setText(updatedText)
-    handleArr(updatedText, id)
+    handleInfo(updatedText, id)
   }
 
   return (
@@ -101,45 +93,92 @@ const Input = ({ title, example, handleArr, id }) => {
   )
 }
 
-const ContactInfo = ({ handleArr, handleResumeProfile }) => {
+const ContactInfo = ({ handleResumeProfile, handleArr }) => {
+  const [generalInfo, setGeneralInfo] = useState([
+    {
+      value: "",
+      id: "FirstName",
+    },
+    {
+      value: "",
+      id: "LastName",
+    },
+    {
+      value: "",
+      id: "Occupation",
+    },
+    {
+      value: "",
+      id: "Phone",
+    },
+    {
+      value: "",
+      id: "Email",
+    },
+    {
+      value: "",
+      id: "Objective",
+    },
+  ])
+
+  const handleInfo = (text, id) => {
+    const newData = generalInfo.map(obj => {
+      if (obj.id === id) {
+        return { ...obj, value: text }
+      } else {
+        return obj
+      }
+    })
+
+    setGeneralInfo(newData)
+
+    handleArr(newData, "General Info")
+  }
+
   return (
     <form>
       <AddPhoto handleResumeProfile={handleResumeProfile} />
       <Input
         title="First Name"
         example="e.g. Sarah"
-        handleArr={handleArr}
+        handleInfo={handleInfo}
         id="FirstName"
       />
       <Input
         title="Last Name"
         example="e.g. Clark"
-        handleArr={handleArr}
+        handleInfo={handleInfo}
         id="LastName"
       />
       <Input
         title="Occupation"
         example="e.g. Sales Associate"
-        handleArr={handleArr}
+        handleInfo={handleInfo}
         id="Occupation"
       />
       <Input
         title="Address"
         example="e.g. 54 Corbett Road, San Francisco, CA 94100"
-        handleArr={handleArr}
+        handleInfo={handleInfo}
         id="Address"
       />
       <Input
         title="Phone"
         example="e.g. (551) 123-7676"
-        handleArr={handleArr}
+        handleInfo={handleInfo}
         id="Phone"
       />
       <Input
         title="Email"
         example="e.g. clark.kent@email.com"
-        handleArr={handleArr}
+        handleInfo={handleInfo}
         id="Email"
+      />
+      <Input
+        title="Objective"
+        example="e.g. Proactive, customer-orientated retail professional with over 4 years of experience in reputable shops. Received 3 ‘Passion Awards’ for delivering outstanding service and have consistently surpassed my target KPIs for mystery shoppers."
+        handleInfo={handleInfo}
+        id="Objective"
       />
     </form>
   )
@@ -150,8 +189,8 @@ const Info = ({ handleArr, handleResumeProfile }) => {
     <div className="info">
       <Title />
       <ContactInfo
-        handleArr={handleArr}
         handleResumeProfile={handleResumeProfile}
+        handleArr={handleArr}
       />
     </div>
   )

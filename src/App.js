@@ -4,38 +4,23 @@ import React, { Component } from "react"
 import NavBar from "./components/navbar"
 import Resume from "./components/resume"
 import Info from "./components/contact-information"
+import emptyProfileImage from "./images/847-8474751_download-empty-profile.png"
 
 const App = () => {
-  const [profilePic, setProfilePic] = useState("")
+  const [profilePic, setProfilePic] = useState(emptyProfileImage)
 
   const [Arr, setArr] = useState([
     {
-      value: "",
-      id: "FirstName",
-    },
-    {
-      value: "",
-      id: "LastName",
-    },
-    {
-      value: "",
-      id: "Occupation",
-    },
-    {
-      value: "",
-      id: "Phone",
-    },
-    {
-      value: "",
-      id: "Email",
+      data: [null],
+      id: "General Info",
     },
   ])
 
-  const handleArr = (text, id) => {
+  const handleArr = (arr, id) => {
     setArr(
       Arr.map(obj => {
         if (obj.id === id) {
-          return { ...obj, value: text }
+          return { ...obj, data: arr }
         } else {
           return obj
         }
@@ -44,8 +29,12 @@ const App = () => {
   }
 
   const handleResumeProfile = value => {
-    setProfilePic(value)
+    if (value !== "") {
+      setProfilePic(value)
+    }
   }
+
+  console.log(Arr)
 
   return (
     <>
@@ -63,7 +52,7 @@ const App = () => {
             <button className="navigation-btn">Finish</button>
           </div>
         </div>
-        <Resume Arr={Arr} profilePic={profilePic} />
+        <Resume profilePic={profilePic} data={Arr} />
       </div>
     </>
   )
